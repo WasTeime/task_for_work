@@ -1,0 +1,10 @@
+{
+    "Products": "Продукты",
+    "Profile": "Профиль",
+    "Log Out": "Выйти",
+    "The :attribute must contain at least one letter.": "Поле :attribute должно содержать хотя бы одну букву.",
+    "The :attribute must contain at least one number.": "Поле :attribute должно содержать хотя бы одну цифру.",
+    "The :attribute must contain at least one symbol.": "Поле :attribute должно содержать хотя бы один символ.",
+    "The :attribute must contain at least one uppercase and one lowercase letter.": "Поле :attribute должно содержать хотя бы одну заглавную и одну строчную букву.",
+    "The given :attribute has appeared in a data leak. Please choose a different :attribute.": "Указанный :attribute появился в утечке данных. Пожалуйста, выберите другой :attribute."
+} 
