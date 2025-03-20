@@ -15,10 +15,9 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <!-- Изображение товара -->
                         <div class="relative">
-                            <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="w-full rounded-lg shadow-md">
-                            @if($product->stock > 0)
+                            <img src="https://placehold.co/600x400" alt="{{ $product->name }}" class="w-full h-auto rounded-lg shadow-md">
+                            @if($product->quantity > 0)
                                 <span class="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm">
                                     В наличии
                                 </span>
@@ -32,7 +31,7 @@
                         <!-- Информация о товаре -->
                         <div>
                             <h1 class="text-3xl font-bold text-gray-900 mb-4">{{ $product->name }}</h1>
-                            
+
                             <div class="mb-6">
                                 <span class="text-3xl font-bold text-gray-900">{{ number_format($product->price, 2) }} ₽</span>
                             </div>
@@ -46,26 +45,18 @@
                                 <h2 class="text-lg font-semibold text-gray-800 mb-2">Характеристики</h2>
                                 <ul class="space-y-2">
                                     <li class="flex justify-between">
-                                        <span class="text-gray-600">Артикул:</span>
-                                        <span class="font-medium">{{ $product->sku }}</span>
-                                    </li>
-                                    <li class="flex justify-between">
                                         <span class="text-gray-600">Категория:</span>
-                                        <span class="font-medium">{{ $product->category }}</span>
-                                    </li>
-                                    <li class="flex justify-between">
-                                        <span class="text-gray-600">Производитель:</span>
-                                        <span class="font-medium">{{ $product->manufacturer }}</span>
+                                        <span class="font-medium">{{ $product->category->name }}</span>
                                     </li>
                                     <li class="flex justify-between">
                                         <span class="text-gray-600">В наличии:</span>
-                                        <span class="font-medium">{{ $product->stock }} шт.</span>
+                                        <span class="font-medium">{{ $product->quantity }} шт.</span>
                                     </li>
                                 </ul>
                             </div>
 
-                            @if($product->stock > 0)
-                                <form action="{{ route('cart.add', $product) }}" method="POST" class="mt-6">
+                            @if($product->quantity > 0)
+                                <form action="{{ route('cart.add', $product->id) }}" method="POST" class="mt-6">
                                     @csrf
                                     <button type="submit" class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">
                                         Добавить в корзину
@@ -82,4 +73,4 @@
             </div>
         </div>
     </div>
-</x-app-layout> 
+</x-app-layout>
