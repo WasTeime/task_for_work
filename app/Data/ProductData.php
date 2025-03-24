@@ -5,7 +5,6 @@ namespace App\Data;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Spatie\LaravelData\Data;
-use Spatie\LaravelData\Optional;
 
 class ProductData extends Data
 {
@@ -14,8 +13,9 @@ class ProductData extends Data
       public string $name,
       public ?string $description,
       public float $price,
+      //количество на складе
       public int $quantity,
-      public CategoryData $category,
+      public ?CategoryData $category,
     ) {}
 
     public static function fromModel(Product $product): self
@@ -35,10 +35,10 @@ class ProductData extends Data
         return new self(
             id: $request->id ?? null,
             name: $request->name,
-            description: $request->description,
+            description: $request->description ?? null,
             price: $request->price,
             quantity: $request->quantity,
-            category: CategoryData::fromId($request->category)
+            category: $request->category ? CategoryData::fromId($request->category) : null
         );
     }
 }

@@ -5,21 +5,19 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('products') }}">
+                    <a href="{{ route('dashboard') }}">
                         <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('products')" :active="request()->routeIs('products')">
+                    <x-nav-link :href="route('products.index')" :active="request()->routeIs('products.index')">
                         {{ __('Products') }}
                     </x-nav-link>
-                    @admin
-                    <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
+                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Admin Panel') }}
                     </x-nav-link>
-                    @endadmin
                 </div>
             </div>
 
@@ -30,8 +28,8 @@
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 relative mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                     </svg>
-                    <span class="relative top-0 right-0 -mr-2 flex items-center justify-center w-4 h-4 text-xs font-bold text-white rounded-full {{ session('cart_count', 0) > 0 ? 'bg-indigo-600' : 'bg-gray-400' }}">
-                        {{ session('cart_count', 0) }}
+                    <span id="cart-count" class="relative top-0 right-0 -mr-2 flex items-center justify-center w-4 h-4 text-xs font-bold rounded-full">
+                        0
                     </span>
                 </a>
 
@@ -82,7 +80,7 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('products')" :active="request()->routeIs('products')">
+            <x-responsive-nav-link :href="route('products.index')" :active="request()->routeIs('products.index')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
         </div>

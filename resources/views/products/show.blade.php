@@ -56,12 +56,35 @@
                             </div>
 
                             @if($product->quantity > 0)
-                                <form action="{{ route('cart.add', $product->id) }}" method="POST" class="mt-6">
-                                    @csrf
-                                    <button type="submit" class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">
+                                <div class="product-id" id="{{$product->id}}"></div>
+                                <div id="cart-container-{{ $product->id }}">
+                                    <!-- Кнопка "Добавить в корзину" -->
+                                    <button
+                                        type="submit"
+                                        onclick="addToCart({{ $product->id }}, '{{ $product->name }}', {{ $product->price }}, {{$product->quantity}})"
+                                        class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                                        id="add-to-cart-button-{{ $product->id }}"
+                                    >
                                         Добавить в корзину
                                     </button>
-                                </form>
+
+                                    <!-- Контейнер для кнопок изменения количества -->
+                                    <div id="quantity-buttons-{{ $product->id }}" style="display: none;" class="flex items-center justify-center space-x-4 mt-2">
+                                        <button
+                                            onclick="changeQuantity({{ $product->id }}, -1)"
+                                            class="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
+                                        >
+                                            -
+                                        </button>
+                                        <span id="product-quantity-{{ $product->id }}" class="text-lg font-medium text-gray-700">1</span>
+                                        <button
+                                            onclick="changeQuantity({{ $product->id }}, 1)"
+                                            class="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
+                                        >
+                                            +
+                                        </button>
+                                    </div>
+                                </div>
                             @else
                                 <button disabled class="w-full bg-gray-400 text-white px-6 py-3 rounded-lg cursor-not-allowed">
                                     Товар отсутствует
@@ -73,4 +96,7 @@
             </div>
         </div>
     </div>
+    <x-slot name="scripts">
+        @vite('resources/js/functional/cart/moreAndLessButtonsForAddToCart')
+    </x-slot>
 </x-app-layout>

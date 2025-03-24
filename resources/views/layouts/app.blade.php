@@ -12,7 +12,7 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
         <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/functional/cart/cart.js', 'resources/js/functional/cart/countProductsInCartNavBar'])
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
@@ -32,5 +32,7 @@
                 {{ $slot }}
             </main>
         </div>
+        <!-- Слот для дополнительных скриптов -->
+        {{ $scripts ?? '' }}
     </body>
 </html>

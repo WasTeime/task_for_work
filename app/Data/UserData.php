@@ -13,8 +13,6 @@ class UserData extends Data
         public string $name,
         public string $surname,
         public string $lastname,
-        public string $email,        
-        #[DataCollectionOf(OrderData::class)]
-        public ?DataCollection $orders = null,
+        public string $email,
     ) {}
-} 
+}

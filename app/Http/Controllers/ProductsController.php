@@ -2,15 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
-use App\Models\Product;
 use Exception;
-use Illuminate\View\View;
 use App\Data\CategoryData;
 use Illuminate\Support\Facades\Log;
-use App\Data\ProductData;
 use Illuminate\Http\Request;
-use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Services\ProductService;
 
@@ -21,9 +16,6 @@ class ProductsController extends Controller
     public function index()
     {
         $products = ProductService::getAll();
-        if (Auth::user()->isAdmin()) {
-            return view('admin.products.index', compact('products'));
-        }
         return view('products.index', compact('products'));
     }
 

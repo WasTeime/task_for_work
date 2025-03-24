@@ -5,7 +5,7 @@
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 {{ __('Создание товара') }}
             </h2>
-            <a href="{{ route('products') }}" class="text-blue-600 hover:text-blue-800">
+            <a href="{{ route('products.index') }}" class="text-blue-600 hover:text-blue-800">
                 ← Назад к списку
             </a>
         </div>
